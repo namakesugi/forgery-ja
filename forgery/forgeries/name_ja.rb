@@ -1,11 +1,24 @@
 # encoding: utf-8
 class Forgery::NameJa < Forgery::Name
+  # Define RET_TYPE : Kanji
   KANJI = 0
+  # Define RET_TYPE : Hiragana
   HIRA = 1
+  # Define RET_TYPE : Katakana
   KANA = 2
+  # Define RET_TYPE : Half Katakana
   H_KANA = 3
+  # Define RET_TYPE : Romaji
   ROMA = 4
 
+  # Returns LastName in Japanese
+  # @params ret_type [Fixnum] 戻す形を指定します
+  # @example
+  #   Forgery[:name_ja].last_name #=> "佐藤"
+  #   Forgery[:name_ja].last_name(Forgery::NameJa::HIRA) #=> "さとう"
+  #   Forgery[:name_ja].last_name(Forgery::NameJa::KANA) #=> "サトウ"
+  #   Forgery[:name_ja].last_name(Forgery::NameJa::H_KANA) #=> "ｻﾄｳ" = half kana
+  #   Forgery[:name_ja].last_name(Forgery::NameJa::ROMA) #=> "sato"
   def self.last_name(ret_type=KANJI)
     parse(dictionaries[:last_names_ja].random, ret_type)
   end

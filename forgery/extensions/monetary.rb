@@ -1,10 +1,10 @@
 # encoding: utf-8
-# Extensions Forgery::Date
+# Extensions Forgery::Monetary
 class Forgery::Monetary
   # @param Hash options
   # @option options [Integer] :max (1000) 金額の最大値
   # @option options [Integer] :min (0) 金額の最小値
-  # @return String 曜日を日本語で返します
+  # @return String :max - :minの間の数値に[円]を付与して返します
   def self.ja_formatted_money(options={})
     "%d円" % ja_money(options)
   end
