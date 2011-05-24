@@ -1,0 +1,39 @@
+== Forgery-ja
+
+Forgeryにおいて日本語のテストデータを作成します
+
+== install
+
+<pre><code>
+# Add this to your Gemfile
+gem 'forgery'
+</code></pre>
+
+<pre><code>
+rails generate forgery
+</code></pre>
+
+以下のフォルダが作成されます
+* RAILS\_ROOT/lib/forgery
+* RAILS\_ROOT/lib/forgery/dictionaries
+* RAILS\_ROOT/lib/forgery/extensions
+* RAILS\_ROOT/lib/forgery/forgeries
+* RAILS\_ROOT/lib/forgery/formats
+
+ダウンロードしたファイルをlib/forgery以下へ保存してください
+
+== Examples
+"山本 健"
+"なかむら しゅん"
+"フジタ アマネ"
+"ﾀﾏｼﾛ ﾕｽﾞﾊ"
+"suzuki midori"
+
+<pre><code>
+Forgery(:name_ja).full_name                          # => "山本 健"
+Forgery(:name_ja).full_name(Forgery::NameJa::HIRA)   # => "なかむら しゅん"
+Forgery(:name_ja).full_name(Forgery::NameJa::KANA)   # => "フジタ アマネ"
+Forgery(:name_ja).full_name(Forgery::NameJa::H_KANA) # => "ﾀﾏｼﾛ ﾕｽﾞﾊ" ... half kana
+Forgery(:name_ja).full_name(Forgery::NameJa::ROMA)   # => "suzuki midori"
+</code></pre>
+
